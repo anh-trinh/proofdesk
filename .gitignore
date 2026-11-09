@@ -1,0 +1,32 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+.mypy_cache/
+.ruff_cache/
+.pytest_cache/
+.hypothesis/
+.coverage
+htmlcov/
+dist/
+*.egg-info/
+
+# Node (web app, later)
+node_modules/
+.output/
+.vinxi/
+
+# AWS CDK (later)
+cdk.out/
+
+# Secrets and real data: never commit
+.env
+.env.*
+!.env.example
+samples/private/
+*.pem
+*.key
+
+# Editors and OS
+.DS_Store
+.idea/
