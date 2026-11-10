@@ -1,0 +1,25 @@
+// .vscode/extensions.json: VS Code offers to install these when the repo opens.
+{
+  "recommendations": [
+    "ms-python.python",
+    "charliermarsh.ruff",
+    "ms-python.mypy-type-checker",
+    "tamasfe.even-better-toml",
+    "redhat.vscode-yaml",
+    "github.vscode-github-actions",
+    "editorconfig.editorconfig",
+    "amazonwebservices.aws-toolkit-vscode",
+    "dbaeumer.vscode-eslint",
+    "bradlc.vscode-tailwindcss",
+    "vitest.explorer",
+    "ms-playwright.playwright",
+    "anthropic.claude-code"
+  ],
+  // These overlap with Ruff and give conflicting results.
+  "unwantedRecommendations": [
+    "ms-python.black-formatter",
+    "ms-python.isort",
+    "ms-python.flake8",
+    "ms-python.pylint"
+  ]
+}

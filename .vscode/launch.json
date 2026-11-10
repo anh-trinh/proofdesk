@@ -1,0 +1,31 @@
+// .vscode/launch.json: Run and Debug configurations.
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      // Milestone 2: run the processor handler locally with a sample SQS event.
+      "name": "Python: processor with sample event",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder:python}/scripts/invoke_local.py",
+      "args": ["tests/events/sqs_s3_put.json"],
+      "cwd": "${workspaceFolder:python}",
+      "envFile": "${workspaceFolder:python}/.env.local"
+    },
+    {
+      // Milestone 5: start the TanStack Start dev server with the debugger attached.
+      "name": "Web: dev server",
+      "type": "node-terminal",
+      "request": "launch",
+      "command": "pnpm dev",
+      "cwd": "${workspaceFolder:web}"
+    },
+    {
+      // Milestone 5: open Chrome with the debugger attached. Check the port in the Vite config.
+      "name": "Web: debug in browser",
+      "type": "chrome",
+      "request": "launch",
+      "url": "http://localhost:3000"
+    }
+  ]
+}

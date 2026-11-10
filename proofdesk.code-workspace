@@ -1,0 +1,25 @@
+// proofdesk.code-workspace: open it with File > Open Workspace from File.
+{
+  "folders": [
+    { "name": "repo", "path": "." },
+    { "name": "python", "path": "services/proofdesk" }
+    // Milestone 2 adds: { "name": "infra", "path": "infra" }
+    // Milestone 5 adds: { "name": "web", "path": "apps/web" }
+  ],
+  "settings": {
+    // Hide the sub-projects inside "repo" so each file shows up only once in the tree.
+    "files.exclude": { "services": true, "infra": true, "apps": true },
+    // Shared by every folder in the workspace.
+    "editor.formatOnSave": true,
+    "files.insertFinalNewline": true,
+    "files.trimTrailingWhitespace": true,
+    "files.watcherExclude": {
+      "**/.venv/**": true,
+      "**/node_modules/**": true,
+      "**/cdk.out/**": true
+    },
+    "search.exclude": { "**/cdk.out": true, "**/build": true, "**/routeTree.gen.ts": true },
+    // Never run a task automatically when a folder opens.
+    "task.allowAutomaticTasks": "off"
+  }
+}

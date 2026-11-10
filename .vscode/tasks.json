@@ -1,0 +1,60 @@
+// .vscode/tasks.json
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "test",
+      "type": "shell",
+      "command": "make test",
+      "group": { "kind": "test", "isDefault": true },
+      "problemMatcher": []
+    },
+    {
+      "label": "lint",
+      "type": "shell",
+      "command": "make lint",
+      "problemMatcher": []
+    },
+    {
+      // Target added in Milestone 5 (JSON Schema and TypeScript types).
+      "label": "contracts",
+      "type": "shell",
+      "command": "make contracts",
+      "problemMatcher": []
+    },
+    {
+      // Target added in Milestone 2 (Lambda packages).
+      "label": "build",
+      "type": "shell",
+      "command": "make build",
+      "group": { "kind": "build", "isDefault": true },
+      "problemMatcher": []
+    },
+    {
+      // Shows what would change on dev. Never a task for cdk deploy.
+      "label": "cdk diff (dev)",
+      "type": "shell",
+      "command": "cdk diff -c env=dev",
+      "options": {
+        "cwd": "${workspaceFolder}/infra",
+        "env": { "AWS_PROFILE": "proofdesk-dev" }
+      },
+      "problemMatcher": []
+    },
+    {
+      // Calls Bedrock for real: about 0.3 USD per run of 60 documents.
+      "label": "eval (real Bedrock calls, costs money)",
+      "type": "shell",
+      "command": "make eval PROMPT=${input:promptVersion}",
+      "options": { "env": { "AWS_PROFILE": "proofdesk-dev" } },
+      "problemMatcher": []
+    }
+  ],
+  "inputs": [
+    {
+      "id": "promptVersion",
+      "type": "promptString",
+      "description": "Prompt version to evaluate, for example v3"
+    }
+  ]
+}
