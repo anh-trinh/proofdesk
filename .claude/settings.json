@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "deny": [
+      "Read(./.env*)",
+      "Read(./samples/private/**)",
+      "Bash(cdk deploy:*)",
+      "Bash(aws s3 rm:*)",
+      "Bash(aws dynamodb delete-table:*)"
+    ]
+  }
+}
