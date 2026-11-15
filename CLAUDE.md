@@ -42,6 +42,6 @@ When reviewing a diff (for example with /code-review):
   instead of the session, IAM policy with "*", XML parsed without defusedxml,
   extracted values or PII written to logs, secrets or real documents in the diff.
 - Flag missing tests for new behaviour. New Python code needs a unit test.
-- Do not comment on formatting: Ruff and ESLint enforce it in CI.
+- Do not comment on formatting: Ruff enforces it in CI (ESLint will once `apps/web` lands).
 - Do not suggest new dependencies without explaining the licence and why the
   standard library is not enough.
