@@ -1,4 +1,4 @@
-from decimal import Decimal
+from decimal import Decimal, localcontext
 
 import pytest
 
@@ -27,12 +27,48 @@ def test_float_and_bool_are_rejected(bad: object) -> None:
         to_money(bad, "AUD")  # type: ignore[arg-type]
 
 
-@pytest.mark.parametrize("bad", ["abc", "", "NaN", "Infinity", "1e30"])
+@pytest.mark.parametrize("bad", ["abc", "", "NaN", "Infinity"])
 def test_garbage_and_non_finite_values_are_rejected(bad: str) -> None:
     with pytest.raises(MoneyError):
         to_money(bad, "AUD")
 
 
-def test_unknown_currency_is_rejected() -> None:
-    with pytest.raises(MoneyError):
-        to_money("10", "XXX")
+def test_amount_above_limit_is_rejected() -> None:
+    with pytest.raises(MoneyError, match="amount_too_large"):
+        to_money("1e30", "AUD")
+
+
+def test_result_does_not_depend_on_caller_decimal_context() -> None:
+    with localcontext() as ctx:
+        ctx.prec = 50
+        with pytest.raises(MoneyError, match="amount_too_large"):
+            to_money("1e30", "AUD")
+    with localcontext() as ctx:
+        ctx.prec = 3
+        assert to_money("123456.78", "AUD") == Decimal("123456.78")
+
+
+def test_error_message_does_not_contain_the_input() -> None:
+    with pytest.raises(MoneyError) as exc_info:
+        to_money("INV-4711-secret", "AUD")
+    assert "INV-4711-secret" not in str(exc_info.value)
+
+
+@pytest.mark.parametrize(
+    ("value", "currency", "expected"),
+    [
+        (10, "USD", Decimal("10.00")),
+        (Decimal("2.5"), "VND", Decimal("3")),
+        ("-1.005", "AUD", Decimal("-1.01")),
+    ],
+)
+def test_int_decimal_and_negative_inputs(
+    value: str | int | Decimal, currency: str, expected: Decimal
+) -> None:
+    assert to_money(value, currency) == expected
+
+
+@pytest.mark.parametrize("currency", ["XXX", "aud"])
+def test_unknown_or_lowercase_currency_is_rejected(currency: str) -> None:
+    with pytest.raises(MoneyError, match="unsupported_currency"):
+        to_money("10", currency)
