@@ -37,6 +37,17 @@ AWS CDK in `infra` (from Milestone 2), TanStack Start web app in `apps/web` (fro
 When reviewing a diff (for example with /code-review):
 
 - Write review comments in English. Be specific: file, line, why it matters, suggested fix.
+- Put suggested code in a GitHub suggestion block (```suggestion) anchored to the exact
+  lines it replaces, so the author can use "Commit suggestion". Include only the
+  replacement lines, with no diff markers and no unrelated changes.
+- End every comment that has a suggestion block with one line:
+  `Commit message: <type>: <description>`
+  Use a Conventional Commits type from "How we work" (`fix:`, `refactor:`, `test:`,
+  `docs:`, `chore:`). Lower case, imperative mood, no trailing period, 72 characters max.
+  Example: `Commit message: fix: reject float amounts in to_money`
+  GitHub cannot pre-fill this, so the author pastes it into the commit dialog.
+- When several suggestions belong in one commit, say so and give one shared commit
+  message for "Add suggestion to batch".
 - Rate each finding High, Medium or Low.
 - High: float used for money (must be Decimal), tenantId taken from the request
   instead of the session, IAM policy with "*", XML parsed without defusedxml,
