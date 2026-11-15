@@ -27,4 +27,4 @@
 
 ## Review
 - [ ] PR title follows Conventional Commits
-- [ ] Ran /code-review (and Copilot if enabled), handled every comment
+- [ ] Ran /code-review in Claude Code, replied to and resolved every comment

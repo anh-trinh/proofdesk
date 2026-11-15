@@ -31,3 +31,17 @@ AWS CDK in `infra` (from Milestone 2), TanStack Start web app in `apps/web` (fro
 ## Never do
 - Run `cdk deploy`, delete AWS resources or change GitHub settings.
 - Read `.env*` files or anything in `samples/private/`.
+
+## Code review rules
+
+When reviewing a diff (for example with /code-review):
+
+- Write review comments in English. Be specific: file, line, why it matters, suggested fix.
+- Rate each finding High, Medium or Low.
+- High: float used for money (must be Decimal), tenantId taken from the request
+  instead of the session, IAM policy with "*", XML parsed without defusedxml,
+  extracted values or PII written to logs, secrets or real documents in the diff.
+- Flag missing tests for new behaviour. New Python code needs a unit test.
+- Do not comment on formatting: Ruff enforces it in CI (ESLint will once `apps/web` lands).
+- Do not suggest new dependencies without explaining the licence and why the
+  standard library is not enough.
