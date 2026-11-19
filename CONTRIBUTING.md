@@ -18,4 +18,5 @@
 
 - No secrets, no real documents, no `float` for money.
 - New behaviour needs a test. Coverage must stay at or above 90%.
-- Architecture decisions go in `docs/adr/`.
+- Architecture decisions go in `docs/decisions/` as MADR 4.0.0 records, in the same PR as
+  the change they explain.
