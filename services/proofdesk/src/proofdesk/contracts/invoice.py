@@ -19,7 +19,7 @@ Number = Annotated[
     Decimal,
     BeforeValidator(_reject_float),
     Field(allow_inf_nan=False),
-    PlainSerializer(str, return_type=str, when_used="json"),
+    PlainSerializer(lambda value: format(value, "f"), return_type=str, when_used="json"),
 ]
 
 # How sure the reader is, from 0 (no idea) to 1 (certain).
@@ -61,4 +61,4 @@ class Invoice(BaseModel):
     subtotal: Extracted[Number]
     tax_total: Extracted[Number]
     total: Extracted[Number]
-    lines: list[LineItem]
+    lines: tuple[LineItem, ...]
