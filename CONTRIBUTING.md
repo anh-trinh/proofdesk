@@ -7,7 +7,7 @@
 3. Write the test first. Commit the failing test (`test:`), then the code (`feat:`).
 4. Open a draft pull request. The PR title must follow Conventional Commits because it
    becomes the commit message on `main` (squash merge).
-5. Run `make lint` and `make test` before marking the PR ready.
+5. Run `make check` before marking the PR ready. It runs the same checks as CI.
 
 ## Conventional Commits
 

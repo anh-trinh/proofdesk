@@ -10,6 +10,8 @@ AWS CDK in `infra` (from Milestone 2), TanStack Start web app in `apps/web` (fro
 - `make setup`: install Python dependencies with uv
 - `make test`: all Python tests with coverage (must stay at or above 90%)
 - `make lint`: ruff check, ruff format --check, mypy --strict
+- `make check`: lint and test, the same gate as CI. Run it before every push.
+- `make check-fast`: lint and unit tests without coverage, used by the Stop hook
 - One test file: `cd services/proofdesk && uv run pytest tests/unit/test_money.py --no-cov`
 
 ## How we work
