@@ -24,6 +24,11 @@ def test_money_is_a_string_in_json_never_a_number() -> None:
     assert data["total"]["value"] == "110.00"
 
 
+def test_money_in_json_never_uses_exponent_notation() -> None:
+    field = Extracted[Number].model_validate({"value": "1E+2", "confidence": "1"})
+    assert json.loads(field.model_dump_json())["value"] == "100"
+
+
 def test_float_is_rejected_for_money() -> None:
     with pytest.raises(ValidationError):
         Extracted[Number](value=0.1, confidence=Decimal("1"))  # type: ignore[arg-type]
@@ -52,3 +57,4 @@ def test_invoice_cannot_be_changed_after_creation() -> None:
     invoice = make_invoice()
     with pytest.raises(ValidationError):
         invoice.total = invoice.subtotal
+    assert isinstance(invoice.lines, tuple)
