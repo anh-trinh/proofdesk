@@ -54,6 +54,7 @@ class Invoice(BaseModel):
     invoice_number: Extracted[str]
     series: Extracted[str]
     issue_date: Extracted[date]
+    due_date: Extracted[date] = Extracted[date]()
     seller_name: Extracted[str]
     seller_tax_id: Extracted[str]
     buyer_name: Extracted[str]
