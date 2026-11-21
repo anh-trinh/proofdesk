@@ -10,6 +10,9 @@ import re
 _WEIGHTS = (10, 1, 3, 5, 7, 9, 11, 13, 15, 17, 19)
 _MODULUS = 89
 
+# An ABN with spaces is at most 14 characters. Longer input cannot be an ABN.
+_MAX_LENGTH = 32
+
 # [0-9], not \d and not str.isdigit(): those also match digits from other scripts
 # (such as the superscript two) that int() rejects or that are not ASCII digits.
 _ABN_DIGITS = re.compile(r"[0-9]{11}")
@@ -21,6 +24,8 @@ def is_valid_abn(text: str) -> bool:
     Plain spaces are ignored, so "51 824 753 556" and "51824753556" are both accepted.
     Any other character, including tabs, no-break spaces and hyphens, makes it invalid.
     """
+    if len(text) > _MAX_LENGTH:
+        return False
     digits = text.replace(" ", "")
     if _ABN_DIGITS.fullmatch(digits) is None:
         return False
