@@ -5,7 +5,24 @@
       "Read(./samples/private/**)",
       "Bash(cdk deploy:*)",
       "Bash(aws s3 rm:*)",
-      "Bash(aws dynamodb delete-table:*)"
+      "Bash(aws dynamodb delete-table:*)",
+      "Bash(git push --force:*)",
+      "Bash(git push -f:*)"
+    ],
+    "ask": [
+      "Edit(./.github/workflows/**)",
+      "Write(./.github/workflows/**)",
+      "Edit(./infra/**)",
+      "Write(./infra/**)"
+    ]
+  },
+  "hooks": {
+    "Stop": [
+      {
+        "hooks": [
+          { "type": "command", "command": "make check-fast 1>&2 || exit 2" }
+        ]
+      }
     ]
   }
 }
