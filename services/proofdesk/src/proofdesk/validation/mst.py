@@ -4,7 +4,7 @@ import re
 
 # 10 digits, optionally followed by a hyphen and a 3 digit branch code.
 # [0-9], not \d and not str.isdigit(): those also match digits from other scripts.
-_MST = re.compile(r"[0-9]{10}(-[0-9]{3})?")
+_MST = re.compile(r"[0-9]{10}(?:-[0-9]{3})?")
 
 
 def is_valid_mst(text: str) -> bool:
