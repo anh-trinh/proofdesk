@@ -10,6 +10,8 @@ AWS CDK in `infra` (from Milestone 2), TanStack Start web app in `apps/web` (fro
 - `make setup`: install Python dependencies with uv
 - `make test`: all Python tests with coverage (must stay at or above 90%)
 - `make lint`: ruff check, ruff format --check, mypy --strict
+- `make check`: lint and test, the same gate as CI. Run it before every push.
+- `make check-fast`: lint and unit tests without coverage, used by the Stop hook
 - One test file: `cd services/proofdesk && uv run pytest tests/unit/test_money.py --no-cov`
 
 ## How we work
@@ -20,7 +22,7 @@ AWS CDK in `infra` (from Milestone 2), TanStack Start web app in `apps/web` (fro
 - Every change reaches `main` through a pull request. Never push to `main`.
 
 ## Hard rules
-- Never use `float` for money. Use `Decimal` and `proofdesk.contracts.money.to_money` (ADR-0007).
+- Never use `float` for money. Use `Decimal` and `proofdesk.contracts.money.to_money` (ADR-0007, `docs/decisions/`).
 - Parse XML only with `defusedxml` (ADR-0003).
 - No `*` in IAM actions or resources.
 - `tenantId` comes from the verified session only, never from the request.
