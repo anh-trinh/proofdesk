@@ -30,3 +30,9 @@ samples/private/
 # Editors and OS
 .DS_Store
 .idea/
+
+# Personal Claude Code files and local experiments
+CLAUDE.local.md
+.claude/settings.local.json
+.claude/PRPs/
+scratch/

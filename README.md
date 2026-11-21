@@ -30,9 +30,9 @@ Bedrock, CloudFront), AWS CDK in Python, GitHub Actions.
 ## Development
 
 ```bash
-make setup   # install Python dependencies
-make test    # run tests with coverage
-make lint    # ruff + mypy
+make setup        # install Python dependencies
+make check        # the CI gate: lint, type check and tests with coverage
+make check-fast   # quick feedback: lint, type check and unit tests, no coverage gate
 ```
 
 ## Security

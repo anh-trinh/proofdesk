@@ -1,0 +1,10 @@
+# The maintainer owns everything. Sensitive paths are listed explicitly, so a
+# future change to the default owner cannot silently remove review on them.
+*                       @anh-trinh
+
+/.github/workflows/     @anh-trinh
+/.github/rulesets/      @anh-trinh
+/.github/CODEOWNERS     @anh-trinh
+/.claude/               @anh-trinh
+/infra/                 @anh-trinh
+/SECURITY.md            @anh-trinh
