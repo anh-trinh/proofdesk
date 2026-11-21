@@ -1,0 +1,29 @@
+name: Bug report
+description: Something behaves differently from the documentation or the tests.
+labels: ["type:fix"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use synthetic data only. Never attach a real invoice or personal data.
+  - type: textarea
+    id: actual
+    attributes:
+      label: What happened
+      description: The observed behaviour, including the error code if there is one.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What should happen
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Steps to reproduce
+      description: Commands, input (synthetic) and the commit or version used.
+      render: text
+    validations:
+      required: true
