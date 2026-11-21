@@ -22,7 +22,7 @@ AWS CDK in `infra` (from Milestone 2), TanStack Start web app in `apps/web` (fro
 - Every change reaches `main` through a pull request. Never push to `main`.
 
 ## Hard rules
-- Never use `float` for money. Use `Decimal` and `proofdesk.contracts.money.to_money` (ADR-0007).
+- Never use `float` for money. Use `Decimal` and `proofdesk.contracts.money.to_money` (ADR-0007, `docs/decisions/`).
 - Parse XML only with `defusedxml` (ADR-0003).
 - No `*` in IAM actions or resources.
 - `tenantId` comes from the verified session only, never from the request.
