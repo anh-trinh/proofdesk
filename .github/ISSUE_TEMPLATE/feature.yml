@@ -1,0 +1,24 @@
+name: Feature
+description: New behaviour, written as a user story with testable acceptance criteria.
+labels: ["type:feat"]
+body:
+  - type: textarea
+    id: story
+    attributes:
+      label: User story
+      placeholder: As a <persona>, I want <capability>, so that <value>.
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance criteria
+      description: One Given, When, Then per line. Each one becomes a test.
+      placeholder: Given ..., when ..., then ...
+    validations:
+      required: true
+  - type: textarea
+    id: notes
+    attributes:
+      label: Design and test notes
+      description: Related ADRs, security or cost impact, and the tests you expect.
