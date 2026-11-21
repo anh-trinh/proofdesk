@@ -59,12 +59,6 @@ are guidance that the model may judge not to apply.
 7. **Human review and merge:** the operator reads the diff and approves. The pull request
    is squash merged ([ADR-0015](decisions/0015-squash-merge-with-linear-history.md)).
 
-## Attribution
-
-Commits do not carry an AI `Co-Authored-By` trailer. This is a recorded deviation from the
-project playbook, described in ADR-0015. AI use is disclosed on this page instead, and every
-commit is signed by the operator, who is accountable for it.
-
 ## Known gaps in the early history
 
 The process above was adopted on 19 November 2026. Commits before that date show the
