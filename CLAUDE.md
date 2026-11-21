@@ -32,7 +32,9 @@ AWS CDK in `infra` (from Milestone 2), TanStack Start web app in `apps/web` (fro
 - Do not add `Co-Authored-By` trailers or "Generated with" lines to commits or PR descriptions.
 
 ## Never do
-- Run `cdk deploy`, delete AWS resources or change GitHub settings.
+- Run `cdk deploy` or delete AWS resources.
+- Change GitHub settings, except through config committed in the repo or a command the operator
+  approves. Force pushes are denied.
 - Read `.env*` files or anything in `samples/private/`.
 
 ## Code review rules
