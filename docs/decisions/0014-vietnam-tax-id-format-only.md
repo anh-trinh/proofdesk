@@ -9,8 +9,10 @@ decision-makers: Anh Trinh
 ## Context and Problem Statement
 
 The Australian ABN has a published checksum, and ProofDesk verifies it. For the Vietnamese
-tax ID (MST) we did not find an official, current specification of a check digit, and the
-algorithms on blogs have no clear source. Should the MST check include a checksum?
+tax ID (MST) the official structure has a check digit as the tenth digit, but we did not find
+its formula in any source we could read (checked on 2026-11-21). Circular 90/2026/TT-BTC is
+reported to change the structure from 1 July 2026 and has not been read, and the algorithms
+on blogs have no clear source. Should the MST check include a checksum?
 
 ## Decision Drivers
 
