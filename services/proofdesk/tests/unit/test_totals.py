@@ -82,3 +82,8 @@ def test_missing_currency_is_an_unsupported_currency_issue() -> None:
 def test_unreadable_amounts_are_skipped_rather_than_reported_as_mismatches() -> None:
     invoice = make_invoice(tax_total=ex(None))
     assert check_totals(invoice) == []
+
+
+def test_line_with_an_unreadable_quantity_is_skipped() -> None:
+    line = make_line().model_copy(update={"quantity": ex(None)})
+    assert check_totals(make_invoice(lines=[line])) == []
