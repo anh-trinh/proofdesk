@@ -52,3 +52,7 @@ def test_rejects_separators_and_characters_other_than_digits_and_spaces(abn: str
 def test_rejects_digits_that_look_like_numbers_but_are_not_0_to_9(digit: str) -> None:
     # str.isdigit() accepts all of these, and int() rejects the first one.
     assert not is_valid_abn(f"51 824 753 55{digit}")
+
+
+def test_rejects_oversized_input_even_when_the_digits_are_valid() -> None:
+    assert not is_valid_abn("51 824 753 556" + " " * 1_000)
