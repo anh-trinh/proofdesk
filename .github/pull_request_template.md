@@ -1,5 +1,14 @@
+## Problem
+What is wrong or missing, and why it matters.
+
+## Approach
+What this PR changes, why this approach, and the alternatives that were rejected.
+
+## Test evidence
+Commands and their output. For TDD changes, include the failing run before the fix.
+
 ## Change
-- Related issue:
+- Closes #
 - Plan agreed before coding: yes / no
 
 ## Quality
@@ -27,4 +36,4 @@
 
 ## Review
 - [ ] PR title follows Conventional Commits
-- [ ] Ran /code-review (and Copilot if enabled), handled every comment
+- [ ] Ran /code-review in Claude Code, replied to and resolved every comment
