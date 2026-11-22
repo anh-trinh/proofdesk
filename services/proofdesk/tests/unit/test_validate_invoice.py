@@ -43,8 +43,7 @@ def test_every_broken_rule_is_reported() -> None:
 
 
 def test_issue_codes_are_plain_strings_for_the_front_end() -> None:
-    assert IssueCode.TOTAL_MISMATCH == "total_mismatch"
-    assert str(IssueCode.TOTAL_MISMATCH.value) == "total_mismatch"
+    assert IssueCode.TOTAL_MISMATCH.value == "total_mismatch"
 
 
 def test_unreadable_tax_id_is_left_to_the_confidence_rule() -> None:

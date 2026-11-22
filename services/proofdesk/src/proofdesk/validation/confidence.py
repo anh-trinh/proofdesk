@@ -3,6 +3,7 @@
 from decimal import Decimal
 
 from proofdesk.contracts.invoice import Extracted, Invoice
+from proofdesk.validation.codes import IssueCode
 from proofdesk.validation.issues import ValidationIssue
 
 # Below this the reviewer is asked to check the field.
@@ -14,9 +15,9 @@ _OPTIONAL_FIELDS = frozenset({"due_date"})
 
 def _check_field(name: str, field: Extracted[object], optional: bool) -> ValidationIssue | None:
     if field.value is None:
-        return None if optional else ValidationIssue("missing_value", "warning", name)
+        return None if optional else ValidationIssue(IssueCode.MISSING_VALUE, "warning", name)
     if field.confidence < LOW_CONFIDENCE:
-        return ValidationIssue("low_confidence", "warning", name)
+        return ValidationIssue(IssueCode.LOW_CONFIDENCE, "warning", name)
     return None
 
 

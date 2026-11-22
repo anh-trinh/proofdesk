@@ -4,10 +4,11 @@ from decimal import Decimal
 
 from proofdesk.contracts.invoice import Invoice
 from proofdesk.contracts.money import CURRENCY_EXPONENTS, to_money
+from proofdesk.validation.codes import IssueCode
 from proofdesk.validation.issues import ValidationIssue
 
 
-def _error(code: str, field: str) -> ValidationIssue:
+def _error(code: IssueCode, field: str) -> ValidationIssue:
     return ValidationIssue(code=code, severity="error", field=field)
 
 
@@ -21,7 +22,7 @@ def check_totals(invoice: Invoice) -> list[ValidationIssue]:
     """
     currency = invoice.currency.value
     if currency not in CURRENCY_EXPONENTS:
-        return [_error("unsupported_currency", "currency")]
+        return [_error(IssueCode.UNSUPPORTED_CURRENCY, "currency")]
 
     def money(value: Decimal | None) -> Decimal | None:
         return None if value is None else to_money(value, currency)
@@ -35,15 +36,15 @@ def check_totals(invoice: Invoice) -> list[ValidationIssue]:
         if amount is None or quantity is None or unit_price is None:
             continue
         if to_money(quantity * unit_price, currency) != amount:
-            issues.append(_error("line_amount_mismatch", f"lines[{index}].amount"))
+            issues.append(_error(IssueCode.LINE_AMOUNT_MISMATCH, f"lines[{index}].amount"))
 
     subtotal = money(invoice.subtotal.value)
     known = [a for a in line_amounts if a is not None]
     if subtotal is not None and len(known) == len(line_amounts) and sum(known) != subtotal:
-        issues.append(_error("subtotal_mismatch", "subtotal"))
+        issues.append(_error(IssueCode.SUBTOTAL_MISMATCH, "subtotal"))
 
     tax = money(invoice.tax_total.value)
     total = money(invoice.total.value)
     if subtotal is not None and tax is not None and total is not None and subtotal + tax != total:
-        issues.append(_error("total_mismatch", "total"))
+        issues.append(_error(IssueCode.TOTAL_MISMATCH, "total"))
     return issues

@@ -3,10 +3,11 @@
 from datetime import date
 
 from proofdesk.contracts.invoice import Invoice
+from proofdesk.validation.codes import IssueCode
 from proofdesk.validation.issues import ValidationIssue
 
 
-def _warning(code: str, field: str) -> ValidationIssue:
+def _warning(code: IssueCode, field: str) -> ValidationIssue:
     return ValidationIssue(code=code, severity="warning", field=field)
 
 
@@ -19,7 +20,7 @@ def check_dates(invoice: Invoice, today: date) -> list[ValidationIssue]:
     due = invoice.due_date.value
     issues: list[ValidationIssue] = []
     if issued is not None and issued > today:
-        issues.append(_warning("issue_date_in_future", "issue_date"))
+        issues.append(_warning(IssueCode.ISSUE_DATE_IN_FUTURE, "issue_date"))
     if issued is not None and due is not None and due < issued:
-        issues.append(_warning("due_date_before_issue_date", "due_date"))
+        issues.append(_warning(IssueCode.DUE_DATE_BEFORE_ISSUE_DATE, "due_date"))
     return issues
