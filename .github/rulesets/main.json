@@ -2,12 +2,28 @@
   "name": "protect-main",
   "target": "branch",
   "enforcement": "active",
-  "conditions": { "ref_name": { "include": ["~DEFAULT_BRANCH"], "exclude": [] } },
+  "conditions": {
+    "ref_name": {
+      "include": [
+        "~DEFAULT_BRANCH"
+      ],
+      "exclude": []
+    }
+  },
   "bypass_actors": [],
   "rules": [
-    { "type": "deletion" },
-    { "type": "non_fast_forward" },
-    { "type": "required_linear_history" },
+    {
+      "type": "deletion"
+    },
+    {
+      "type": "non_fast_forward"
+    },
+    {
+      "type": "required_linear_history"
+    },
+    {
+      "type": "required_signatures"
+    },
     {
       "type": "pull_request",
       "parameters": {
@@ -22,7 +38,26 @@
       "type": "required_status_checks",
       "parameters": {
         "strict_required_status_checks_policy": true,
-        "required_status_checks": [{ "context": "python" }, { "context": "secrets" }]
+        "required_status_checks": [
+          {
+            "context": "python"
+          },
+          {
+            "context": "secrets"
+          },
+          {
+            "context": "codeql (python)"
+          },
+          {
+            "context": "codeql (actions)"
+          },
+          {
+            "context": "dependency-review"
+          },
+          {
+            "context": "pr-title"
+          }
+        ]
       }
     }
   ]
