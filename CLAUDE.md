@@ -37,6 +37,19 @@ AWS CDK in `infra` (from Milestone 2), TanStack Start web app in `apps/web` (fro
   approves. Force pushes are denied.
 - Read `.env*` files or anything in `samples/private/`.
 
+## Resume protocol
+
+This section applies only while a `.handbook/` folder exists.
+
+- At the start of every session, and when the operator says "continue" or "tiep tuc",
+  read `.handbook/PROGRESS.md`, then open only the part file that holds the next task.
+- Say which task is next and why, state the model and effort that
+  `docs/model-routing.md` expects (once that file exists), then plan the task in plan mode
+  and wait for approval before changing any file.
+- After the operator confirms the task is done, update `PROGRESS.md`: status, date,
+  link, Current, Next and notes.
+- If `PROGRESS.md` disagrees with the git history or GitHub issues, stop and ask.
+
 ## Code review rules
 
 When reviewing a diff (for example with /code-review):
