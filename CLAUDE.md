@@ -23,13 +23,13 @@ AWS CDK in `infra` (from Milestone 2), TanStack Start web app in `apps/web` (fro
 
 ## Hard rules
 - Never use `float` for money. Use `Decimal` and `proofdesk.contracts.money.to_money` (ADR-0007, `docs/decisions/`).
-- Parse XML only with `defusedxml` (ADR-0003).
+- Parse XML only with `defusedxml` (ADR-0003, written with the XML parser in Milestone 1).
 - No `*` in IAM actions or resources.
 - `tenantId` comes from the verified session only, never from the request.
 - Never log extracted values or personal data. Log IDs and codes only.
 - No secrets and no real invoices in the repo. Real samples live in `samples/private/` (git-ignored).
 - Code, comments, commit messages and repo docs are in English.
-- Do not add `Co-Authored-By` trailers or "Generated with" lines to commits or PR descriptions.
+- Keep the default commit and pull request attribution. docs/ai-workflow.md explains why.
 
 ## Never do
 - Run `cdk deploy` or delete AWS resources.
