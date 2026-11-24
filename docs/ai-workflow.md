@@ -37,11 +37,18 @@ are guidance that the model may judge not to apply.
 
 | Guardrail | Where | What it stops |
 | --- | --- | --- |
-| Deny rules | [`.claude/settings.json`](../.claude/settings.json) | Reading secrets and private samples, `cdk deploy`, deleting AWS data |
+| Deny rules | [`.claude/settings.json`](../.claude/settings.json) | Reading secrets and private samples, `cdk deploy`, `cdk bootstrap`, deleting AWS data, force pushes, pushing to `main`, `gh pr merge` |
+| Ask rules | [`.claude/settings.json`](../.claude/settings.json) | Editing workflows, `infra/`, `.claude/` and `CLAUDE.md` without a prompt |
 | Project rules | [`CLAUDE.md`](../CLAUDE.md) | Money as `float`, XML without `defusedxml`, `*` in IAM, `tenantId` from the request, personal data in logs |
 | Pre-commit hooks | [`.pre-commit-config.yaml`](../.pre-commit-config.yaml) | Secrets, private keys and unformatted code before a commit exists |
 | CI and the `main` ruleset | [`.github/workflows/`](../.github/workflows/), [`.github/rulesets/`](../.github/rulesets/) | Merging without green tests, coverage of at least 90%, a Conventional Commits title, and resolved review threads |
 | Code scanning | CodeQL, dependency review, OpenSSF Scorecard | Known vulnerability patterns, vulnerable dependencies, weak repository settings |
+
+## Attribution
+
+Commits carry the `Co-Authored-By` trailer and pull requests carry the Claude Code line.
+They are kept on deliberately: hidden AI use would undermine the transparency this page is
+meant to give. There is no `attribution` override in `.claude/settings.json`.
 
 ## Task loop
 
