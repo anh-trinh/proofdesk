@@ -20,6 +20,8 @@ AWS CDK in `infra` (from Milestone 2), TanStack Start web app in `apps/web` (fro
 - Small commits with Conventional Commits messages (`test:`, `feat:`, `fix:`, `refactor:`,
   `docs:`, `chore:`, `ci:`).
 - Every change reaches `main` through a pull request. Never push to `main`.
+- Keep tidy-ups out of a task's diff: a refactor the task needs goes in its own refactor: PR
+  first, and any other clean-up becomes an issue.
 
 ## Hard rules
 - Never use `float` for money. Use `Decimal` and `proofdesk.contracts.money.to_money` (ADR-0007, `docs/decisions/`).

@@ -39,6 +39,23 @@ gh api repos/anh-trinh/proofdesk/commits/<sha> --jq .commit.verification
 `"verified": true` means GitHub accepts the signature. If it is `false`, read the `reason`
 field.
 
+## Code design checklist
+
+Linters check complexity, argument counts and naming style. These rules need a person:
+reviewers and the `code-reviewer` subagent both use this list.
+
+- A function does one thing, at one level of abstraction.
+- Extract a function only when its name and interface are simpler than its body. There is
+  no line limit.
+- Command-query separation: a function either changes state or returns a value, not both.
+- No flag arguments. Use two functions or an enum instead of a `bool` that switches
+  behaviour.
+- Type names carry no noise words (`Manager`, `Processor`, `Data`, `Info`) and no
+  encodings (`IStore`, `str_name`).
+- No SDK request or response object crosses into the domain.
+- Errors are translated at the adapter into domain errors and are never swallowed.
+- One behaviour per test, laid out as arrange, act, assert.
+
 ## Rules
 
 - No secrets, no real documents, no `float` for money.
