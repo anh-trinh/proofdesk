@@ -64,9 +64,11 @@ model is deliberate rather than whatever the session uses.
 
 ## Attribution
 
-Commits carry the `Co-Authored-By` trailer and pull requests carry the Claude Code line.
-They are kept on deliberately: hidden AI use would undermine the transparency this page is
-meant to give. There is no `attribution` override in `.claude/settings.json`.
+Commits and pull requests carry no `Co-Authored-By` trailer and no "Generated with" line;
+`.claude/settings.json` sets `attribution` to empty strings to switch them off. The use of
+Claude Code is disclosed on this page instead, and the operator stays the author and the
+accountable reviewer of every change. Commits made before 25 November 2026 may still carry
+the trailer, because rewriting `main` would need a force push to a protected branch.
 
 ## Task loop
 
