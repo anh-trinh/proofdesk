@@ -37,11 +37,36 @@ are guidance that the model may judge not to apply.
 
 | Guardrail | Where | What it stops |
 | --- | --- | --- |
-| Deny rules | [`.claude/settings.json`](../.claude/settings.json) | Reading secrets and private samples, `cdk deploy`, deleting AWS data |
+| Deny rules | [`.claude/settings.json`](../.claude/settings.json) | Reading secrets and private samples, `cdk deploy`, `cdk bootstrap`, deleting AWS data, force pushes, pushing to `main`, `gh pr merge` |
+| Ask rules | [`.claude/settings.json`](../.claude/settings.json) | Editing workflows, `infra/`, `.claude/` and `CLAUDE.md` without a prompt |
 | Project rules | [`CLAUDE.md`](../CLAUDE.md) | Money as `float`, XML without `defusedxml`, `*` in IAM, `tenantId` from the request, personal data in logs |
 | Pre-commit hooks | [`.pre-commit-config.yaml`](../.pre-commit-config.yaml) | Secrets, private keys and unformatted code before a commit exists |
 | CI and the `main` ruleset | [`.github/workflows/`](../.github/workflows/), [`.github/rulesets/`](../.github/rulesets/) | Merging without green tests, coverage of at least 90%, a Conventional Commits title, and resolved review threads |
 | Code scanning | CodeQL, dependency review, OpenSSF Scorecard | Known vulnerability patterns, vulnerable dependencies, weak repository settings |
+
+## Rules, subagents and skills
+
+Path-scoped rules load only when Claude Code reads or edits a matching file, which keeps
+`CLAUDE.md` short. Subagents and skills run on a stated model and effort, so the choice of
+model is deliberate rather than whatever the session uses.
+
+| Item | Kind | Model and effort | Purpose |
+| --- | --- | --- | --- |
+| [`python.md`](../.claude/rules/python.md) | Rule (`services/**/*.py`, `infra/**/*.py`) | Session model | Money, XML, logging, errors, adapters |
+| [`infra.md`](../.claude/rules/infra.md) | Rule (`infra/**`) | Session model | IAM scope, grants, cdk-nag reasons, log retention |
+| [`web.md`](../.claude/rules/web.md) | Rule (`apps/web/**`) | Session model | Session-only tenant, server-only SDK, no raw HTML, amounts as strings |
+| [`workflows.md`](../.claude/rules/workflows.md) | Rule (`.github/workflows/**`) | Session model | Least permissions, pinned actions, no script injection |
+| [`code-reviewer`](../.claude/agents/code-reviewer.md) | Subagent, read-only | `sonnet`, `high` | Reviews a diff against `CLAUDE.md`, the design checklist and acceptance criteria |
+| [`security-reviewer`](../.claude/agents/security-reviewer.md) | Subagent, read-only | `opus`, `high` | Reviews trust boundaries against the threat model and OWASP Top 10:2025 |
+| [`docs-helper`](../.claude/agents/docs-helper.md) | Subagent, no Bash | `haiku`, `medium` | Edits `docs/` and `README.md` only |
+| [`/manual-test-guide`](../.claude/skills/manual-test-guide/SKILL.md) | Skill, operator only | `sonnet`, `medium` | Writes the manual test session and records reported results |
+| [`/new-adr`](../.claude/skills/new-adr/SKILL.md) | Skill, operator only | `opus`, `high` | Writes an ADR in MADR 4.0.0 |
+
+## Attribution
+
+Commits carry the `Co-Authored-By` trailer and pull requests carry the Claude Code line.
+They are kept on deliberately: hidden AI use would undermine the transparency this page is
+meant to give. There is no `attribution` override in `.claude/settings.json`.
 
 ## Task loop
 
