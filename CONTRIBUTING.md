@@ -14,6 +14,48 @@
 `feat:` new behaviour, `fix:` bug fix, `test:` tests only, `refactor:` no behaviour change,
 `docs:` documentation, `ci:` workflows, `chore:` tooling.
 
+## Signed commits
+
+The ruleset requires signed commits on `main`. Sign the commits on your branch too, so
+every commit in a pull request shows as Verified and the history is known to come from the
+account owner.
+
+Set these four keys once (use the path of your own SSH signing key):
+
+```bash
+git config --global gpg.format ssh
+git config --global user.signingkey ~/.ssh/<your-signing-key>.pub
+git config --global commit.gpgsign true
+git config --global tag.gpgsign true
+```
+
+Add the public key to GitHub as a signing key (`gh ssh-key add <key>.pub --type signing`).
+To check a commit after pushing:
+
+```bash
+gh api repos/anh-trinh/proofdesk/commits/<sha> --jq .commit.verification
+```
+
+`"verified": true` means GitHub accepts the signature. If it is `false`, read the `reason`
+field.
+
+## Code design checklist
+
+Linters check complexity, argument counts and naming style. These rules need a person:
+reviewers and the `code-reviewer` subagent both use this list.
+
+- A function does one thing, at one level of abstraction.
+- Extract a function only when its name and interface are simpler than its body. There is
+  no line limit.
+- Command-query separation: a function either changes state or returns a value, not both.
+- No flag arguments. Use two functions or an enum instead of a `bool` that switches
+  behaviour.
+- Type names carry no noise words (`Manager`, `Processor`, `Data`, `Info`) and no
+  encodings (`IStore`, `str_name`).
+- No SDK request or response object crosses into the domain.
+- Errors are translated at the adapter into domain errors and are never swallowed.
+- One behaviour per test, laid out as arrange, act, assert.
+
 ## Rules
 
 - No secrets, no real documents, no `float` for money.

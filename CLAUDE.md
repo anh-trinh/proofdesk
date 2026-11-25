@@ -20,10 +20,12 @@ AWS CDK in `infra` (from Milestone 2), TanStack Start web app in `apps/web` (fro
 - Small commits with Conventional Commits messages (`test:`, `feat:`, `fix:`, `refactor:`,
   `docs:`, `chore:`, `ci:`).
 - Every change reaches `main` through a pull request. Never push to `main`.
+- Keep tidy-ups out of a task's diff: a refactor the task needs goes in its own refactor: PR
+  first, and any other clean-up becomes an issue.
 
 ## Hard rules
 - Never use `float` for money. Use `Decimal` and `proofdesk.contracts.money.to_money` (ADR-0007, `docs/decisions/`).
-- Parse XML only with `defusedxml` (ADR-0003).
+- Parse XML only with `defusedxml` (ADR-0003, written with the XML parser in Milestone 1).
 - No `*` in IAM actions or resources.
 - `tenantId` comes from the verified session only, never from the request.
 - Never log extracted values or personal data. Log IDs and codes only.
@@ -36,6 +38,19 @@ AWS CDK in `infra` (from Milestone 2), TanStack Start web app in `apps/web` (fro
 - Change GitHub settings, except through config committed in the repo or a command the operator
   approves. Force pushes are denied.
 - Read `.env*` files or anything in `samples/private/`.
+
+## Resume protocol
+
+This section applies only while a `.handbook/` folder exists.
+
+- At the start of every session, and when the operator says "continue" or "tiep tuc",
+  read `.handbook/PROGRESS.md`, then open only the part file that holds the next task.
+- Say which task is next and why, state the model and effort that
+  `docs/model-routing.md` expects (once that file exists), then plan the task in plan mode
+  and wait for approval before changing any file.
+- After the operator confirms the task is done, update `PROGRESS.md`: status, date,
+  link, Current, Next and notes.
+- If `PROGRESS.md` disagrees with the git history or GitHub issues, stop and ask.
 
 ## Code review rules
 
