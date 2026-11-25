@@ -36,3 +36,6 @@ CLAUDE.local.md
 .claude/settings.local.json
 .claude/PRPs/
 scratch/
+
+# Local operator handbook (Vietnamese notes, not for the public repo)
+.handbook/
