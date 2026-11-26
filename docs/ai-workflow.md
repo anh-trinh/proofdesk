@@ -62,6 +62,12 @@ model is deliberate rather than whatever the session uses.
 | [`/manual-test-guide`](../.claude/skills/manual-test-guide/SKILL.md) | Skill, operator only | `sonnet`, `medium` | Writes the manual test session and records reported results |
 | [`/new-adr`](../.claude/skills/new-adr/SKILL.md) | Skill, operator only | `opus`, `high` | Writes an ADR in MADR 4.0.0 |
 
+## Model routing
+
+Each kind of task has a model and an effort level, because a stronger model and a higher
+effort use more of the plan. Every plan states the expected pair and warns if the session
+differs; see [model-routing.md](model-routing.md).
+
 ## Attribution
 
 Commits and pull requests carry no `Co-Authored-By` trailer and no "Generated with" line;
