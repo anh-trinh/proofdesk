@@ -20,6 +20,8 @@ AWS CDK in `infra` (from Milestone 2), TanStack Start web app in `apps/web` (fro
 - Small commits with Conventional Commits messages (`test:`, `feat:`, `fix:`, `refactor:`,
   `docs:`, `chore:`, `ci:`).
 - Every change reaches `main` through a pull request. Never push to `main`.
+- Model and effort per task type: docs/model-routing.md. State the expected model and
+  effort in every plan and warn if the session differs.
 - Keep tidy-ups out of a task's diff: a refactor the task needs goes in its own refactor: PR
   first, and any other clean-up becomes an issue.
 
