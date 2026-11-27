@@ -1,6 +1,6 @@
 [project]
 name = "proofdesk"
-version = "0.1.0"
+version = "1.0.0"
 description = "ProofDesk core: contracts, parsing and validation for invoices"
 requires-python = ">=3.13"
 dependencies = [

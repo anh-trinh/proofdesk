@@ -1,5 +1,25 @@
 # Changelog
 
+## 1.0.0 (2026-11-27)
+
+
+### Added
+
+* add to_money with exact Decimal and per-currency rounding ([87b5636](https://github.com/anh-trinh/proofdesk/commit/87b5636228b02a4c6c2a2f11d55cdd758735d6ba))
+* **contracts:** add invoice contract model ([#34](https://github.com/anh-trinh/proofdesk/issues/34)) ([a50f104](https://github.com/anh-trinh/proofdesk/commit/a50f10452f56293f58407f436adf59a5f43e8696)), closes [#17](https://github.com/anh-trinh/proofdesk/issues/17)
+* **validation:** add duplicate key, date and confidence warnings ([#40](https://github.com/anh-trinh/proofdesk/issues/40)) ([c2a4c26](https://github.com/anh-trinh/proofdesk/commit/c2a4c269d196df2c527960ff17de2f32a35ecf94)), closes [#22](https://github.com/anh-trinh/proofdesk/issues/22)
+* **validation:** check invoice totals ([#39](https://github.com/anh-trinh/proofdesk/issues/39)) ([14d5da8](https://github.com/anh-trinh/proofdesk/commit/14d5da863bec930eb560b364a9d006af16a33185)), closes [#20](https://github.com/anh-trinh/proofdesk/issues/20)
+* **validation:** check Vietnamese tax ID format and report issues ([#37](https://github.com/anh-trinh/proofdesk/issues/37)) ([c80204f](https://github.com/anh-trinh/proofdesk/commit/c80204f53f19308ca888b9fc3b37f83eab3e9e2d)), closes [#19](https://github.com/anh-trinh/proofdesk/issues/19)
+* **validation:** validate ABN checksum ([#36](https://github.com/anh-trinh/proofdesk/issues/36)) ([bb84aca](https://github.com/anh-trinh/proofdesk/commit/bb84aca7631cf96fd2d1ce08b925092a329a942d)), closes [#18](https://github.com/anh-trinh/proofdesk/issues/18)
+* **validation:** validate an invoice end to end ([#41](https://github.com/anh-trinh/proofdesk/issues/41)) ([29fbeec](https://github.com/anh-trinh/proofdesk/commit/29fbeec77f61a832fed11a08aa1ef7dade5d9ef9)), closes [#23](https://github.com/anh-trinh/proofdesk/issues/23)
+
+
+### Fixed
+
+* harden to_money with fixed context, size limit and safe errors ([b2f15e0](https://github.com/anh-trinh/proofdesk/commit/b2f15e014b3cbec57114ca9ff70176ae751aabc4))
+
+## Changelog
+
 All notable changes to this project are documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this
