@@ -4,7 +4,26 @@ updates:
     directory: /
     schedule:
       interval: weekly
+    cooldown:
+      default-days: 5
+    groups:
+      minor-and-patch:
+        patterns: ["*"]
+        update-types: [minor, patch]
+    commit-message:
+      prefix: chore
+      include: scope
   - package-ecosystem: uv
     directory: /services/proofdesk
     schedule:
       interval: weekly
+    cooldown:
+      default-days: 5
+      semver-major-days: 14
+    groups:
+      minor-and-patch:
+        patterns: ["*"]
+        update-types: [minor, patch]
+    commit-message:
+      prefix: chore
+      include: scope
