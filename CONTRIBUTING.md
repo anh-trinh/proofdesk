@@ -39,6 +39,24 @@ gh api repos/anh-trinh/proofdesk/commits/<sha> --jq .commit.verification
 `"verified": true` means GitHub accepts the signature. If it is `false`, read the `reason`
 field.
 
+## Labels
+
+Every issue has one `type:*` label. Add `area:*` labels for the parts it touches.
+
+| Label | Colour | Meaning |
+| --- | --- | --- |
+| `type:feat` | existing | New behaviour |
+| `type:fix` | existing | Bug fix |
+| `type:chore` | existing | Tooling and maintenance |
+| `area:python` | `3572a5` | Python service code |
+| `area:infra` | `ff9900` | AWS CDK and infrastructure |
+| `area:web` | `1d76db` | TanStack Start web app |
+| `area:docs` | `0075ca` | Documentation |
+| `area:ci` | `6f42c1` | GitHub Actions and checks |
+| `risk:trust-boundary` | `b60205` | Touches a trust boundary: also run `/security-review` |
+| `needs:human` | `fbca04` | Has a step only the operator can do |
+| `manual-test` | `0e8a16` | Manual test session for a milestone |
+
 ## Code design checklist
 
 Linters check complexity, argument counts and naming style. These rules need a person:
