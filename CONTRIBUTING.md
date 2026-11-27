@@ -48,6 +48,8 @@ Every issue has one `type:*` label. Add `area:*` labels for the parts it touches
 | `type:feat` | existing | New behaviour |
 | `type:fix` | existing | Bug fix |
 | `type:chore` | existing | Tooling and maintenance |
+| `type:ci` | existing | CI workflows |
+| `type:docs` | existing | Documentation only |
 | `area:python` | `3572a5` | Python service code |
 | `area:infra` | `ff9900` | AWS CDK and infrastructure |
 | `area:web` | `1d76db` | TanStack Start web app |
